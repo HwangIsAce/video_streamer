@@ -2,7 +2,11 @@
 
 
 Before running install dependencies:
-'''npm install'''
+'''ruby
+npm install
+'''
 
 To start the app:
-'''npm start'''
+'''ruby
+npm start
+'''

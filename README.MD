@@ -2,11 +2,7 @@
 
 
 Before running install dependencies:
-'''
-npn install
-'''
+'''npm install'''
 
 To start the app:
-'''
-npm start
-'''
+'''npm start'''

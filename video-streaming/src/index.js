@@ -1,5 +1,6 @@
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
 
 const app = express();
 
@@ -11,8 +12,8 @@ const PORT = process.env.PORT;
 
 app.get("/video", (req, res)=>{
     
-    const path = "/home/jaesung/jaesung/development/video_streamer/videos/SampleVideo_1280x720_1mb.mp4";
-    fs.stat(path, (err, stats) =>{
+    const videoPath = path.join("./videos", "SampleVideo_1280x720_1mb.mp4")
+    fs.stat(videoPath, (err, stats) =>{
         if (err) {
             console.error("An error occured");
             res.sendStatus(500);
@@ -23,10 +24,10 @@ app.get("/video", (req, res)=>{
             "Content-Length": stats.size,
             "Content-Type": "video/mp4",
         });
-        fs.createReadStream(path).pipe(res); // createReadStream -> Reading large files in chunks // pipe -> The contents of the file can be delivered as an HTTP response
+        fs.createReadStream(videoPath).pipe(res); // createReadStream -> Reading large files in chunks // pipe -> The contents of the file can be delivered as an HTTP response
     });
 });
 
 app.listen(PORT, () => {
-    console.log('app listening on port ' +PORT+ ', point your browser at http://localhost:' +PORT+ '/video');
+    console.log('Microservices online')
 });
